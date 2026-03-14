@@ -1,0 +1,347 @@
+{% extends 'base.html' %} 
+{% block content %}
+<script>
+$(document).on("click", ".delete-dialog", function () {
+  var id = $(this).data('id');
+	$("#recordID").val( id );
+});
+function delete_record(disease_id)
+{
+	location.href = "/disease/delete/"+$("#recordID").val();
+}
+jQuery(document).ready(function() {
+	jQuery('#mydatatable').DataTable( {
+		"scrollX": true,
+		dom: 'Bfrtip',
+		buttons: [
+			'copy', 'csv', 'excel', 'pdf', 'print'
+		]
+	} );
+} );
+</script>
+<style>
+	th {
+		text-align: center;
+		background-color: #0d3e71;
+		color: #FFFFFF;
+		text-transform: capitalize;
+	}
+	td {
+		text-align: center;
+	}
+</style>
+
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4">
+            <h1>
+              Disease Datasets
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+ <div class="container">
+		<div class="row">
+			{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+						<strong>{{ message }}</strong>
+					{% endfor %}
+				</div>
+		  {% endif %}
+		  <div class="col-lg-12">
+			<form name="frm" action="" method="post">
+			  <section class="panel">
+				  <table id="mydatatable" class="table table-striped table-advance table-hover" style="color:#000000">
+					<thead>
+					  <tr class="bg-primary">
+						<th>Sr.No.</th>
+						<th>itching</th>
+						<th>skin_rash</th>
+						<th>nodal_skin_eruptions</th>
+						<th>continuous_sneezing</th>
+						<th>shivering</th>
+						<th>chills</th>
+						<th>joint_pain</th>
+						<th>stomach_pain</th>
+						<th>acidity</th>
+						<th>ulcers_on_tongue</th>
+						<th>muscle_wasting</th>
+						<th>vomiting</th>
+						<th>burning_micturition</th>
+						<th>spotting__urination</th>
+						<th>fatigue</th>
+						<th>weight_gain</th>
+						<th>anxiety</th>
+						<th>cold_hands_and_feets</th>
+						<th>mood_swings</th>
+						<th>weight_loss</th>
+						<th>restlessness</th>
+						<th>lethargy</th>
+						<th>patches_in_throat</th>
+						<th>irregular_sugar_level</th>
+						<th>cough</th>
+						<th>high_fever</th>
+						<th>sunken_eyes</th>
+						<th>breathlessness</th>
+						<th>sweating</th>
+						<th>dehydration</th>
+						<th>indigestion</th>
+						<th>headache</th>
+						<th>yellowish_skin</th>
+						<th>dark_urine</th>
+						<th>nausea</th>
+						<th>loss_of_appetite</th>
+						<th>pain_behind_the_eyes</th>
+						<th>back_pain</th>
+						<th>constipation</th>
+						<th>abdominal_pain</th>
+						<th>diarrhoea</th>
+						<th>mild_fever</th>
+						<th>yellow_urine</th>
+						<th>yellowing_of_eyes</th>
+						<th>acute_liver_failure</th>
+						<th>fluid_overload</th>
+						<th>swelling_of_stomach</th>
+						<th>swelled_lymph_nodes</th>
+						<th>malaise</th>
+						<th>blurred_and_distorted_vision</th>
+						<th>phlegm</th>
+						<th>throat_irritation</th>
+						<th>redness_of_eyes</th>
+						<th>sinus_pressure</th>
+						<th>runny_nose</th>
+						<th>congestion</th>
+						<th>chest_pain</th>
+						<th>weakness_in_limbs</th>
+						<th>fast_heart_rate</th>
+						<th>pain_during_bowel_movements</th>
+						<th>pain_in_anal_region</th>
+						<th>bloody_stool</th>
+						<th>irritation_in_anus</th>
+						<th>neck_pain</th>
+						<th>dizziness</th>
+						<th>cramps</th>
+						<th>bruising</th>
+						<th>obesity</th>
+						<th>swollen_legs</th>
+						<th>swollen_blood_vessels</th>
+						<th>puffy_face_and_eyes</th>
+						<th>enlarged_thyroid</th>
+						<th>brittle_nails</th>
+						<th>swollen_extremeties</th>
+						<th>excessive_hunger</th>
+						<th>extra_marital_contacts</th>
+						<th>drying_and_tingling_lips</th>
+						<th>slurred_speech</th>
+						<th>knee_pain</th>
+						<th>hip_joint_pain</th>
+						<th>muscle_weakness</th>
+						<th>stiff_neck</th>
+						<th>swelling_joints</th>
+						<th>movement_stiffness</th>
+						<th>spinning_movements</th>
+						<th>loss_of_balance</th>
+						<th>unsteadiness</th>
+						<th>weakness_of_one_body_side</th>
+						<th>loss_of_smell</th>
+						<th>bladder_discomfort</th>
+						<th>foul_smell_of_urine</th>
+						<th>continuous_feel_of_urine</th>
+						<th>passage_of_gases</th>
+						<th>internal_itching</th>
+						<th>toxic_look_(typhos)</th>
+						<th>depression</th>
+						<th>irritability</th>
+						<th>muscle_pain</th>
+						<th>altered_sensorium</th>
+						<th>red_spots_over_body</th>
+						<th>belly_pain</th>
+						<th>abnormal_menstruation</th>
+						<th>dischromic__patches</th>
+						<th>watering_from_eyes</th>
+						<th>increased_appetite</th>
+						<th>polyuria</th>
+						<th>family_history</th>
+						<th>mucoid_sputum</th>
+						<th>rusty_sputum</th>
+						<th>lack_of_concentration</th>
+						<th>visual_disturbances</th>
+						<th>receiving_blood_transfusion</th>
+						<th>receiving_unsterile_injections</th>
+						<th>coma</th>
+						<th>stomach_bleeding</th>
+						<th>distention_of_abdomen</th>
+						<th>history_of_alcohol_consumption</th>
+						<th>fluid_overload</th>
+						<th>blood_in_sputum</th>
+						<th>prominent_veins_on_calf</th>
+						<th>palpitations</th>
+						<th>painful_walking</th>
+						<th>pus_filled_pimples</th>
+						<th>blackheads</th>
+						<th>scurring</th>
+						<th>skin_peeling</th>
+						<th>silver_like_dusting</th>
+						<th>small_dents_in_nails</th>
+						<th>inflammatory_nails</th>
+						<th>blister</th>
+						<th>red_sore_around_nose</th>
+						<th>yellow_crust_ooze</th>
+						<th style="width: 150px;">prognosis</th>							
+					  </tr>
+					</thead>
+					<tbody>
+					  {% for disease in diseaselist %}
+					  <tr>
+						<td style="text-align:center; font-weight:bold;">{{ forloop.counter }}</td>
+						<td>{{disease.0}}</td>
+						<td>{{disease.1}}</td>
+						<td>{{disease.2}}</td>
+						<td>{{disease.3}}</td>
+						<td>{{disease.4}}</td>
+						<td>{{disease.5}}</td>
+						<td>{{disease.6}}</td>
+						<td>{{disease.7}}</td>
+						<td>{{disease.8}}</td>
+						<td>{{disease.9}}</td>
+						<td>{{disease.10}}</td>
+						<td>{{disease.11}}</td>
+						<td>{{disease.12}}</td>
+						<td>{{disease.13}}</td>
+						<td>{{disease.14}}</td>
+						<td>{{disease.15}}</td>
+						<td>{{disease.16}}</td>
+						<td>{{disease.17}}</td>
+						<td>{{disease.18}}</td>
+						<td>{{disease.19}}</td>
+						<td>{{disease.20}}</td>
+						<td>{{disease.21}}</td>
+						<td>{{disease.22}}</td>
+						<td>{{disease.23}}</td>
+						<td>{{disease.24}}</td>
+						<td>{{disease.25}}</td>
+						<td>{{disease.26}}</td>
+						<td>{{disease.27}}</td>
+						<td>{{disease.28}}</td>
+						<td>{{disease.29}}</td>
+						<td>{{disease.30}}</td>
+						<td>{{disease.31}}</td>
+						<td>{{disease.32}}</td>
+						<td>{{disease.33}}</td>
+						<td>{{disease.34}}</td>
+						<td>{{disease.35}}</td>
+						<td>{{disease.36}}</td>
+						<td>{{disease.37}}</td>
+						<td>{{disease.38}}</td>
+						<td>{{disease.39}}</td>
+						<td>{{disease.40}}</td>
+						<td>{{disease.41}}</td>
+						<td>{{disease.42}}</td>
+						<td>{{disease.43}}</td>
+						<td>{{disease.44}}</td>
+						<td>{{disease.45}}</td>
+						<td>{{disease.46}}</td>
+						<td>{{disease.47}}</td>
+						<td>{{disease.48}}</td>
+						<td>{{disease.49}}</td>
+						<td>{{disease.50}}</td>
+						<td>{{disease.51}}</td>
+						<td>{{disease.52}}</td>
+						<td>{{disease.53}}</td>
+						<td>{{disease.54}}</td>
+						<td>{{disease.55}}</td>
+						<td>{{disease.56}}</td>
+						<td>{{disease.57}}</td>
+						<td>{{disease.58}}</td>
+						<td>{{disease.59}}</td>
+						<td>{{disease.60}}</td>
+						<td>{{disease.61}}</td>
+						<td>{{disease.62}}</td>
+						<td>{{disease.63}}</td>
+						<td>{{disease.64}}</td>
+						<td>{{disease.65}}</td>
+						<td>{{disease.66}}</td>
+						<td>{{disease.67}}</td>
+						<td>{{disease.68}}</td>
+						<td>{{disease.69}}</td>
+						<td>{{disease.70}}</td>
+						<td>{{disease.71}}</td>
+						<td>{{disease.72}}</td>
+						<td>{{disease.73}}</td>
+						<td>{{disease.74}}</td>
+						<td>{{disease.75}}</td>
+						<td>{{disease.76}}</td>
+						<td>{{disease.77}}</td>
+						<td>{{disease.78}}</td>
+						<td>{{disease.79}}</td>
+						<td>{{disease.80}}</td>
+						<td>{{disease.81}}</td>
+						<td>{{disease.82}}</td>
+						<td>{{disease.83}}</td>
+						<td>{{disease.84}}</td>
+						<td>{{disease.85}}</td>
+						<td>{{disease.86}}</td>
+						<td>{{disease.87}}</td>
+						<td>{{disease.88}}</td>
+						<td>{{disease.89}}</td>
+						<td>{{disease.90}}</td>
+						<td>{{disease.91}}</td>
+						<td>{{disease.92}}</td>
+						<td>{{disease.93}}</td>
+						<td>{{disease.94}}</td>
+						<td>{{disease.95}}</td>
+						<td>{{disease.96}}</td>
+						<td>{{disease.97}}</td>
+						<td>{{disease.98}}</td>
+						<td>{{disease.99}}</td>
+						<td>{{disease.100}}</td>
+						<td>{{disease.101}}</td>
+						<td>{{disease.102}}</td>
+						<td>{{disease.103}}</td>
+						<td>{{disease.104}}</td>
+						<td>{{disease.105}}</td>
+						<td>{{disease.106}}</td>
+						<td>{{disease.107}}</td>
+						<td>{{disease.108}}</td>
+						<td>{{disease.109}}</td>
+						<td>{{disease.110}}</td>
+						<td>{{disease.111}}</td>
+						<td>{{disease.112}}</td>
+						<td>{{disease.113}}</td>
+						<td>{{disease.114}}</td>
+						<td>{{disease.115}}</td>
+						<td>{{disease.116}}</td>
+						<td>{{disease.117}}</td>
+						<td>{{disease.118}}</td>
+						<td>{{disease.119}}</td>
+						<td>{{disease.120}}</td>
+						<td>{{disease.121}}</td>
+						<td>{{disease.122}}</td>
+						<td>{{disease.123}}</td>
+						<td>{{disease.124}}</td>
+						<td>{{disease.125}}</td>
+						<td>{{disease.126}}</td>
+						<td>{{disease.127}}</td>
+						<td>{{disease.128}}</td>
+						<td>{{disease.129}}</td>
+						<td>{{disease.130}}</td>
+						<td>{{disease.131}}</td>
+						<td style="text-align: left;">{{disease.132}}</td>
+					  </tr>
+					  {% endfor %}
+				   </tbody>
+				</table>
+			  </section>
+			  <input type="hidden" name="act" />
+			  <input type="hidden" name="medicine_id" id="recordID" />
+			 </form>
+		  </div>
+	  </div>
+	</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% block content %}
+<style>
+	.btn-disease {
+    background-color: #bd1d1d;
+    color: #FFFFFF;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+    width: 261px;
+    font-weight: bold;
+    font-size: 14px;
+}
+</style>
+
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4">
+            <h1>
+              All Available Disease
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+ <div class="container">
+		<div class="row">
+		  <div class="col-lg-12">
+			  <section class="panel">
+				<div style="float: left; margin-bottom:32px">
+					{% for disease in disease_list %}
+						<div class="btn-disease">{{disease}}</div>
+					{% endfor %}
+				</div>
+			  </section>
+		  </div>
+	  </div>
+	</div>
+{% endblock content %}

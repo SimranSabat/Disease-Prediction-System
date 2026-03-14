@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+.thc {
+    text-align: center;
+    background-color: #0d3e71;
+    color: #FFFFFF;
+    font-size: 21px;
+    padding: 10px;
+}
+.thce {
+    text-align: center;
+    background-color: #0d3e71;
+    color: #FFFFFF;
+    font-size: 15px;
+	width: 50%;
+}
+td {
+	text-align: center;
+	font-weight: bold;
+}
+</style>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>Disease Prediction</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+<div class="container">
+	<div class="row">
+		{% if messages %}
+			<div class="alert alert-success fade in" style="margin:10px;">
+				{% for message in messages %}
+					<strong>{{ message }}</strong>
+				{% endfor %}
+			</div>
+	  {% endif %}
+	  <div class="col-lg-12">
+		<form name="frm" action="" method="post">
+		  <section class="panel" style="padding: 10px;">
+			<h2 class="thc">All Available Disease</h2>
+			<pre>{{disease_list}}</pre>
+			<h2 class="thc">Analysis of the Dataset</h2>
+					<table style="width: 100%;">
+						<tr>
+							<td colspan="2" width="100%">
+								<table border="1" width="100%" style="background-color: #FFFFFF;">
+									<tr>
+										<th class="thce" style="width:25%">Algorith Name</th>
+										<th class="thce" style="width:25%">Accuracy Score</th>
+									</tr>
+									<tr>
+										<td>Type of Data</td>
+										<td>{{typeofdata}}</td>
+									</tr>
+									<tr>
+										<td>Data Shape</td>
+										<td>{{datashape}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					
+					<h2 class="thc">Printing out a few columns (Top 5 Columns)</h2>
+					<pre style="background-color: #FFFFFF">{{datahead}}</pre>
+					<h2 class="thc">Printing out random sample records</h2>
+					<pre style="background-color: #FFFFFF">{{datasample}}</pre>
+					<h2 class="thc">Data Description</h2>
+					<pre style="background-color: #FFFFFF">{{datadescribe}}</pre>
+				</section>
+				<input type="hidden" name="act" />
+				<input type="hidden" name="medicine_id" id="recordID" />
+			   </form>
+			</div>
+		</div>
+	  </div>
+  {% endblock content %}

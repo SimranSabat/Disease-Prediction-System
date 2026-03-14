@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+	jQuery(function () {
+		jQuery("#files_start_date").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "0:+1",
+			dateFormat: 'd MM,yy'
+		});
+		jQuery("#files_end_date").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "0:+1",
+			dateFormat: 'd MM,yy'
+		});
+	});
+</script>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>{{heading}}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="registration-bg">
+	<div class="row">
+		<form enctype="multipart/form-data" method="post" class="form-signin wow fadeInUp" action="" style="max-width:60%">
+			{% csrf_token %}
+			<h2 class="form-signin-heading">
+				Upload Disease Dataset for Prediction
+			</h2>
+			{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+						<strong>{{ message }}</strong>
+					{% endfor %}
+				</div>
+			{% endif %}
+			<div class="login-wrap">
+				<div class="col-xs-6 form-group" style="clear: both">
+					<label for="pwd">Disease Name</label>
+					<input type="text" value="{{filesDetails.files_name}}" name="files_name" id="files_name" class="form-control" placeholder="Files Name" required>
+				</div>
+				<div class="col-xs-6 form-group" style="clear:both">
+					<label for="pwd">Upload Disease File</label>
+					<input type="file" accept="*/*" class="form-control" placeholder="Disease File" autofocus="" name="files_file" id="files_file"
+					 value="{{filesDetails.files_file}}">
+				</div>
+				<div class="col-xs-6 form-group" style="clear:both">
+					<label for="pwd">Description of the File</label>
+					<textarea class="form-control" style="height:150px;" placeholder="Description" autofocus="" name="files_desc" id="files_desc" required>{{filesDetails.files_desc}}</textarea>
+				</div>
+				<button class="btn btn-lg btn-login btn-block" type="submit">Submit</button>
+			</div>
+			<input type="hidden" name="act" value="save_files">
+			<input type="hidden" name="user_id" value="{{fileslist.files_id}}">
+		</form>
+	</div>
+</div>
+{% if appointmentdetails %}
+<script>
+	$(".update-appointment").hide();
+</script>
+{% endif %}
+{% if request.session.appointment_level_id != 1 %}
+<script>
+	$(".role-options").hide();
+</script>
+{% endif %}
+<!--container end-->
+{% endblock content %}

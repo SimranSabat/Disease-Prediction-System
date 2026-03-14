@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+.thc {
+    text-align: center;
+    background-color: #0d3e71;
+    color: #FFFFFF;
+    font-size: 21px;
+    padding: 10px;
+}
+.thce {
+    text-align: center;
+    background-color: #0d3e71;
+    color: #FFFFFF;
+    font-size: 15px;
+	width: 50%;
+}
+td {
+	text-align: center;
+	font-weight: bold;
+}
+
+.btn-disease {
+	background-color: #bd1d1d;
+	color: #FFFFFF;
+	padding: 10px;
+	margin: 5px;
+	width: 250px;
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: capitalize;
+}
+</style>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>Disease Prediction</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="container">
+	<div class="row">
+	  <div class="col-lg-12">
+		  <section class="panel" style="padding: 10px;">
+			<h2 class="thc">Your Disease Prediction Results</h2>
+			<div style="background-color: #FFFFFF; padding: 20px; text-align: center;">
+				<div class="alert alert-danger fade in" style="margin:10px; font-size: 19px;">					
+					<strong>It seems like you are suffered from <span style="color:#0f710d; text-decoration: underline; font-weight: bold; font-size: 20px;">{{prediction.0}}</span> disease.</strong>
+				</div>
+				<h2 class="thc">You have following Symptoms</h2>
+				<center>
+				<div class="btn-disease col-xs-6">{{symptom1}}</div>
+				<div class="btn-disease col-xs-6">{{symptom2}}</div>
+				<div class="btn-disease col-xs-6">{{symptom3}}</div>
+				<div class="btn-disease col-xs-6">{{symptom4}}</div>
+				<div class="btn-disease col-xs-6">{{symptom5}}</div>
+				<div class="btn-disease col-xs-6">{{symptom6}}</div>
+				<div style="clear: both;"></div>
+				</center>
+			</div>
+			</section>		
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

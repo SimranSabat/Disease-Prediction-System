@@ -1,0 +1,115 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+	jQuery(function () {
+		jQuery("#files_start_date").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "0:+1",
+			dateFormat: 'd MM,yy'
+		});
+		jQuery("#files_end_date").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "0:+1",
+			dateFormat: 'd MM,yy'
+		});
+	});
+</script>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>Disease Prediction</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="registration-bg">
+	<div class="row">
+		<form enctype="multipart/form-data" method="post" class="form-signin wow fadeInUp" action="" style="max-width:60%">
+			{% csrf_token %}
+			<h2 class="form-signin-heading">
+				Check Your Disease
+			</h2>
+			
+			<div class="alert alert-danger fade in" style="margin:10px;">					
+					<strong>Choose 6 unique symptoms for predicting your disease !!!</strong>
+			</div>
+			<div class="login-wrap">
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 1</label>
+					<select name="symptom1" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 2</label>
+					<select name="symptom2" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 3</label>
+					<select name="symptom3" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 4</label>
+					<select name="symptom4" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 5</label>
+					<select name="symptom5" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<div class="col-xs-6 form-group">
+					<label for="pwd">Symptom 6</label>
+					<select name="symptom6" required class="form-control" placeholder="Select User" autofocus="" /> 
+					<option value="">Please Select</option>
+					{% for symp in symptoms %}
+						<option value= "{{symp}}">{{symp}}</option>
+				 	{% endfor %}
+					</select>
+				</div>
+				<button class="btn btn-lg btn-login btn-block" type="submit">Check and Show Result</button>
+			</div>
+			<input type="hidden" name="act" value="save_files">
+			<input type="hidden" name="user_id" value="{{fileslist.files_id}}">
+		</form>
+	</div>
+</div>
+{% if appointmentdetails %}
+<script>
+	$(".update-appointment").hide();
+</script>
+{% endif %}
+{% if request.session.appointment_level_id != 1 %}
+<script>
+	$(".role-options").hide();
+</script>
+{% endif %}
+<!--container end-->
+{% endblock content %}

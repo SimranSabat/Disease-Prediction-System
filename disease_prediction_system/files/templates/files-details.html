@@ -1,0 +1,72 @@
+{% extends 'base.html' %} 
+{% block content %}
+<script>
+$(document).on("click", ".delete-dialog", function () {
+  var id = $(this).data('id');
+	$("#recordID").val( id );
+});
+function delete_record(files_id)
+{
+	location.href = "/files/delete/"+$("#recordID").val();
+}
+</script>
+
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4">
+            <h1>
+              All Disease Datasets
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+ <div class="container">
+		<div class="row">
+			{% if messages %}
+				<div class="alert alert-success fade in" style="margin:10px;">
+					{% for message in messages %}
+						<strong>{{ message }}</strong>
+					{% endfor %}
+				</div>
+		  {% endif %}
+		  <div class="col-lg-12">
+			<form name="frm" action="" method="post">
+			  <section class="panel">
+				  <table class="table table-striped table-advance table-hover" style="color:#000000">
+				   <tbody>
+					  <tr class="bg-primary">
+						<th style="background-color:#045fbd; color:#FFFFFF; width:10%">Sr. No.</th>
+						<th style="background-color:#045fbd; color:#FFFFFF; width:30%">Files Name</th>
+						<th style="background-color:#045fbd; color:#FFFFFF; width:30%">Original File Name</th>
+						<th style="background-color:#045fbd; color:#FFFFFF;; width:30%"><i class="icon_cogs"></i> Action</th>
+					  </tr>
+					  {% for files in fileslist %}
+					  <tr>
+						<td style="text-align:center; font-weight:bold;">{{ forloop.counter }}</td>
+						<td>{{files.files_name}}</td>
+						<td>{{files.files_original_file_name}}</td>
+						<td>
+						  <div class="btn-group">
+						    <a href="/disease/details/{{files.files_id}}" class="btn btn-success">View Data</a>
+							<a class="delete-dialog btn btn-danger" data-id="{{files.files_id}}" data-toggle="modal" href="#myModal-2">Delete</a>
+							<a href="/disease/prediction/{{files.files_id}}" class="btn btn-info" style="height:34px;">Prediction</a>
+							<a href="/disease/analysis/{{files.files_id}}" class="btn btn-primary" style="height:34px;">Analysis</a>
+						  </div>
+						  </td>
+					  </tr>
+					  {% endfor %}
+				   </tbody>
+				</table>
+			  </section>
+			  <input type="hidden" name="act" />
+			  <input type="hidden" name="medicine_id" id="recordID" />
+			 </form>
+		  </div>
+	  </div>
+	</div>
+{% endblock content %}
